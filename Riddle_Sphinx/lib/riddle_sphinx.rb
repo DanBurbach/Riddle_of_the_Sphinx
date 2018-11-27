@@ -6,8 +6,6 @@ class Sphinx
   attr_reader(:questions)
 
   def initialize()
-    @correct_answers = 0
-    @answers = []
     @questions =
     [["What's in my pockets'es?", "Nothing"],
     ["How long is a piece of string?", "Long enough"],
@@ -21,16 +19,6 @@ class Sphinx
 
   def riddle_selector(number)
     (@questions[number])[0]
-  end
-
-  def temp_file_writer(number)
-    File.open("public/riddle_number_temp", "w+") do |file|
-      file.print(number)
-    end
-  end
-
-  def temp_file_reader()
-    File.read("public/riddle_number_temp").to_i
   end
 
   def valid_answer?(answer_text, question_array_position)

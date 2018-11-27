@@ -8,36 +8,52 @@ require('pry')
 
 get ('/') do
 
-  if(File.read("public/riddle_number_temp") == "")
     new_riddler = Sphinx.new
-    riddle_number = new_riddler.random_riddle_picker()
-    new_riddler.temp_file_writer(riddle_number)
+    # riddle_number = new_riddler.random_riddle_picker()
+    riddle_number = 0
     @question = new_riddler.riddle_selector(riddle_number)
-  else
-    answer = params.fetch('answer')
-    new_riddler = Sphinx.new
-    riddle_number = new_riddler.temp_file_reader()
-
-      if(new_riddler.valid_answer?(answer, riddle_number))
-        @test_answer = "YOu did it"
-      end
-    @question = new_riddler.riddle_selector(riddle_number)
-  end
-
-
+    @secret = riddle_number
   erb(:input)
 end
 
-# post ('/') do
-#   new_riddler = Sphinx.new
-#   riddle_number = new_riddler.temp_file_reader()
-#   @question = new_riddler.riddle_selector(riddle_number)
-#   erb(:input)
-# end
+post ('/question2') do
+    new_riddler = Sphinx.new
+    riddle_number = 1
+    @question = new_riddler.riddle_selector(riddle_number)
+    @secret = riddle_number
+  erb(:question2)
+end
+
+post ('/question3') do
+    new_riddler = Sphinx.new
+    riddle_number = 2
+    @question = new_riddler.riddle_selector(riddle_number)
+    @secret = riddle_number
+  erb(:question3)
+end
 
 post ('/output') do
-  @question = params.fetch('secret')
-  @first_question = params.fetch("first_question")
+  new_riddler = Sphinx.new
+  @first_question = params.fetch("answer")
+  answer_index = params.fetch('secret').to_i
+  answer_attempt = params.fetch('answer')
 
-  erb(:output)
+  if(new_riddler.valid_answer?(answer_attempt, 0) == true)
+    new_riddler = Sphinx.new
+    riddle_number = 1
+    @question = new_riddler.riddle_selector(riddle_number)
+    @secret = riddle_number
+    erb(:question2)
+  elsif (new_riddler.valid_answer?(answer_attempt, 1) == true)
+    new_riddler = Sphinx.new
+    riddle_number = 2
+    @question = new_riddler.riddle_selector(riddle_number)
+    @secret = riddle_number
+    erb(:question3)
+  elsif (new_riddler.valid_answer?(answer_attempt, 2) == true)
+    erb(:win)
+  else
+    erb(:fail)
+  end
+
 end
