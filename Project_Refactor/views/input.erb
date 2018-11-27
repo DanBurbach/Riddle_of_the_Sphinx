@@ -1,0 +1,20 @@
+<h1><%= @description %></h1>
+<h2><%= @other_thing%></h2>
+
+<h3>Let's find out if your dimensions make a triangle, and if they do, which kind of triangle.</h3>
+
+<form action="/output" method="post">
+  <div class="form-group">
+    <label for="first length">First Length</label>
+    <input id="first_side" type="text" name="first_length">
+  </div>
+  <div class="form-group">
+    <label for="second length">Second Length</label>
+    <input id="second_side" type="text" name="second_length">
+  </div>
+  <div class="form-group">
+    <label for="third length">Third Length</label>
+    <input id="third_side" type="text" name="third_length">
+  </div>
+  <button type="submit" class="btn-info">Submit Dimensions Here!</button>
+</form>
