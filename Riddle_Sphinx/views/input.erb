@@ -1,9 +1,10 @@
 <h3>Welcome to the Legand of the Sphinx</h3>
 
-<form action="/output">
+<form action="/">
   <div class="form-group">
-    <label for="first question">Question1</label>
-    <input id="first_question" type="text" name="first_question">
+    <label for="question"><%= @question %></label>
+    <input id="answer" type="text" name="answer">
+    <input id='secret' type='hidden' name='secret' value="<%= @question %>">
   </div>
   <button type="submit" class="btn-alert">Are you sure that is the answer you want?!</button>
 </form>
