@@ -1,7 +1,7 @@
 <form action="/output" method="post">
   <div class="form-group">
     <label for="question">Answer:</label>
-    <input id="answer" type="text" name="answer">
+    <input id="answer" type="text" name="answer" autocomplete="off">
     <input id='secret' type='hidden' name='secret' value="<%= @secret %>">
   </div>
   <button type="submit" class="btn-alert">Are you sure that is the answer you want?!</button>
