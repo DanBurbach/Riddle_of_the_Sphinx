@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Legand of the Hidden Sphinx</title>
+    <title>Legend of the Hidden Sphinx</title>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="/styles.css">
   </head>
   <body>
-    <div class="container">
-      <%= yield %>
+    <div class="container jumbotron">
+      <div class="background">
+        <h1><%= @heading %></h1>
+        <h2><%= @byline %></h2>
+        <h3><%= @question %></h3>
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>

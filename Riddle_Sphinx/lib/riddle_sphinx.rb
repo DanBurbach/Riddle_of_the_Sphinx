@@ -2,9 +2,6 @@ require('pry')
 
 class Sphinx
 
-  attr_accessor(:answers)
-  attr_reader(:questions)
-
   def initialize()
     @questions =
     [["What's in my pockets'es?", "Nothing"],

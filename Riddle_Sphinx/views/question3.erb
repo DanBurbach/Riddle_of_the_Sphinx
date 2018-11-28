@@ -1,8 +1,6 @@
-<h3>QUESTION 3!</h3>
-
 <form action="/output" method="post">
   <div class="form-group">
-    <label for="question"><%= @question %></label>
+    <label for="question">Answer:</label>
     <input id="answer" type="text" name="answer">
     <input id='secret' type='hidden' name='secret' value="<%= @secret %>">
   </div>
